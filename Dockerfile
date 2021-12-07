@@ -1,22 +1,7 @@
-# Set base image (host OS)
-FROM python:3.8-alpine
-
-# By default, listen on port 5000
-EXPOSE 5000/tcp
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the dependencies file to the working directory
-COPY requirements.txt .
-
-# Install any dependencies
-RUN pip install -r requirements.txt
-
-# Copy the content of the local src directory to the working directory
-# COPY app.py .
-COPY ./myapp/. /myapp/
-
-# Specify the command to run on container start
-# CMD [ "python", "./app.py" ]
-CMD ["flask", "run"]
+FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+RUN apk --update add bash nano
+ENV STATIC_URL /static
+ENV STATIC_PATH /var/www/app/static
+COPY ./requirements.txt /var/www/requirements.txt
+COPY . /app
+RUN pip install -r /var/www/requirements.txt
