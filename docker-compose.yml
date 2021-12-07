@@ -1,0 +1,17 @@
+version: '2'
+services:
+    web:
+        build: .
+        ports:
+            - "5005:5000"
+        volumes:
+            - .:/app
+        secrets:
+            - db_password
+        environment:
+            - FLASK_APP=myapp
+            - SECRETPWD=${TSH_EMAIL_PASSWORD}
+
+secrets:
+    db_password:
+      file: ./secrets.txt
