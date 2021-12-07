@@ -1,6 +1,6 @@
 # Learning app development with Flask and Docker
 
-In this repository, I started to learn how to deploy Flask apps using Docker containers.
+In this repository, I started to learn how to deploy Flask apps using Docker containers (which I need for ["Pulse" (open education tracking & performance app)](https://github.com/hannesdatta/pulse) and ["Research Cloud" (research cloud for co-authors on EC2)](https://github.com/hannesdatta/private-research-cloud).
 
 ## Features
 - displaying "Hello world"
